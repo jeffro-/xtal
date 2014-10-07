@@ -10,7 +10,6 @@ function setup() {
   songLoaded = false;
   song = loadSound('audio/xtal.mp3', loaded);
 
-  var hText = createDiv("play dat mothafuckin song nigga");
   hText.position(windowWidth/2, 100);
   hText.class("text");
 
