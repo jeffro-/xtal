@@ -20,9 +20,9 @@ function setup() {
 }
 
 function loaded() {
+  song.setVolume(0);
   songLoaded = true;
   touchStarted = false;
-  song.setVolume(0);
   song.loop();
 }
 
