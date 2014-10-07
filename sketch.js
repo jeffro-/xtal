@@ -10,9 +10,6 @@ function setup() {
   songLoaded = false;
   song = loadSound('audio/xtal.mp3', loaded);
 
-  hText.position(windowWidth/2, 100);
-  hText.class("text");
-
   sustain = 1;
   env = new p5.Env(0.01, 0, 0, sustain, 0, sustain, 0.05, 0);
   rev = new p5.Reverb();
