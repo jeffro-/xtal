@@ -92,12 +92,14 @@ function mousePressed() {
   env.triggerAttack(song);
   noCursor();
   touchStarted = true;
+  return false;
 }
 
 function mouseReleased() {
   cursor();
   env.triggerRelease(song);
   touchStarted = false;
+  return false;
 }
 
 function windowResized(){
