@@ -8,7 +8,7 @@ function setup() {
   colorMode(HSB, 100);
   smooth();
   songLoaded = false;
-  song = loadSound('../audio/xtal.mp3', loaded);
+  song = loadSound('audio/xtal.mp3', loaded);
 
   sustain = 1;
   env = new p5.Env(0.01, 0, 0, sustain, 0, sustain, 0.05, 0);
