@@ -6,7 +6,6 @@ var songLoaded;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 100);
-  noCursor();
   songLoaded = false;
   song = loadSound('audio/xtal.mp3', loaded);
 
@@ -22,6 +21,7 @@ function loaded() {
   songLoaded = true;
   touchStarted = false;
   song.loop();
+  noCursor();
 }
 
 function draw() {
