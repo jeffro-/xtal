@@ -1,4 +1,4 @@
-var song, env, rev, sustain;
+var song, env, rev, volume;
 var touchStarted;
 var a;
 var songLoaded;
@@ -6,17 +6,15 @@ var songLoaded;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 100);
-  smooth();
+  noCursor();
   songLoaded = false;
   song = loadSound('audio/xtal.mp3', loaded);
 
-  sustain = 1;
-  env = new p5.Env(0.01, 0, 0, sustain, 0, sustain, 0.05, 0);
+  env = new p5.Env(0.01, 0, 0, 1, 0, 1, 0.05, 0);
   rev = new p5.Reverb();
   rev.process(song, 3, 0.5);
-
+  
   a = 0;
-
 }
 
 function loaded() {
@@ -81,8 +79,9 @@ function circles() {
   // audio section
   var freq = map(x, 0, width, 0.5, 1.5);
   var revAmp = map(y, 0, height, 1, 0);
-  sustain = map(y, 0, height, 1, 0);
-  env.set(0.01, 0, 0, sustain, 0, sustain, 0.05, 0);
+  var threshold = constrain(y, height/2, height);
+  volume = map(threshold, height/2, height, 1, 0);
+  env.mult(volume);
 
   song.rate(freq);
   rev.amp(revAmp);
@@ -90,13 +89,11 @@ function circles() {
 
 function mousePressed() {
   env.triggerAttack(song);
-  noCursor();
   touchStarted = true;
   return false;
 }
 
 function mouseReleased() {
-  cursor();
   env.triggerRelease(song);
   touchStarted = false;
   return false;
