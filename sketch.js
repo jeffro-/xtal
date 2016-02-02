@@ -6,6 +6,7 @@ var songLoaded;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   colorMode(HSB, 100);
+  cursor();
   songLoaded = false;
   song = loadSound('audio/xtal.mp3', loaded);
 
